@@ -1,0 +1,15 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v4.5.2
+_src_path: https://github.com/jupyterlab/extension-template
+author_email: ''
+author_name: jupyter-strudel contributors
+has_ai_rules: false
+has_binder: false
+has_settings: false
+kind: frontend
+labextension_name: jupyter-strudel
+project_short_description: Strudel livecoding for JupyterLab
+python_name: jupyter_strudel
+repository: https://github.com/mfisher87/strupyter
+test: false
+
