@@ -26,33 +26,59 @@
         "url": "https://github.com/mfisher87/strupyter.git"
     },
     "scripts": {
-        "build": "jlpm build:lib && jlpm build:labextension:dev",
-        "build:prod": "jlpm clean && jlpm build:lib:prod && jlpm build:labextension",
-        "build:labextension": "jupyter labextension build .",
-        "build:labextension:dev": "jupyter labextension build --development True .",
+        "build": "pnpm run build:lib && pnpm run build:labextension:dev",
+        "build:prod": "pnpm run clean && pnpm run build:lib:prod && pnpm run build:labextension",
+        "build:labextension": "uv run jupyter labextension build .",
+        "build:labextension:dev": "uv run jupyter labextension build --development True .",
         "build:lib": "tsc --sourceMap",
         "build:lib:prod": "tsc",
-        "clean": "jlpm clean:lib",
+        "clean": "pnpm run clean:lib",
         "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
         "clean:lintcache": "rimraf .eslintcache .stylelintcache",
         "clean:labextension": "rimraf jupyter_strudel/labextension jupyter_strudel/_version.py",
-        "clean:all": "jlpm clean:lib && jlpm clean:labextension && jlpm clean:lintcache",
-        "eslint": "jlpm eslint:check --fix",
+        "clean:all": "pnpm run clean:lib && pnpm run clean:labextension && pnpm run clean:lintcache",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "eslint": "pnpm run eslint:check --fix",
         "eslint:check": "eslint . --cache --ext .ts,.tsx",
-        "install:extension": "jlpm build",
-        "lint": "jlpm stylelint && jlpm prettier && jlpm eslint",
-        "lint:check": "jlpm stylelint:check && jlpm prettier:check && jlpm eslint:check",
-        "prettier": "jlpm prettier:base --write --list-different",
+        "install:extension": "pnpm run build",
+        "lint": "pnpm run stylelint && pnpm run prettier && pnpm run eslint",
+        "lint:check": "pnpm run stylelint:check && pnpm run prettier:check && pnpm run eslint:check",
+        "prettier": "pnpm run prettier:base --write --list-different",
         "prettier:base": "prettier \"**/*{.ts,.tsx,.js,.jsx,.css,.json,.md}\"",
-        "prettier:check": "jlpm prettier:base --check",
-        "stylelint": "jlpm stylelint:check --fix",
+        "prettier:check": "pnpm run prettier:base --check",
+        "stylelint": "pnpm run stylelint:check --fix",
         "stylelint:check": "stylelint --cache \"style/**/*.css\"",
         "watch": "run-p watch:src watch:labextension",
         "watch:src": "tsc -w --sourceMap",
-        "watch:labextension": "jupyter labextension watch ."
+        "watch:labextension": "uv run jupyter labextension watch ."
     },
     "dependencies": {
-        "@jupyterlab/application": "^4.0.0"
+        "@codemirror/lang-javascript": "^6.2.5",
+        "@jupyterlab/application": "^4.0.0",
+        "@jupyterlab/codemirror": "^4.5.7",
+        "@jupyterlab/docmanager": "^4.5.7",
+        "@jupyterlab/docregistry": "^4.5.7",
+        "@jupyterlab/fileeditor": "^4.5.7",
+        "@jupyterlab/ui-components": "^4.5.7",
+        "@lumino/messaging": "^2.0.4",
+        "@lumino/signaling": "^2.1.5",
+        "@lumino/widgets": "^2.8.0",
+        "@strudel/codemirror": "^1.3.0",
+        "@strudel/core": "^1.2.6",
+        "@strudel/mini": "^1.2.6",
+        "@strudel/repl": "^1.3.0",
+        "@strudel/tonal": "^1.2.6",
+        "@strudel/transpiler": "^1.2.6",
+        "@strudel/webaudio": "^1.3.0"
+    },
+    "peerDependencies": {
+        "@jupyter/collaborative-drive": ">=3.0.0"
+    },
+    "peerDependenciesMeta": {
+        "@jupyter/collaborative-drive": {
+            "optional": true
+        }
     },
     "devDependencies": {
         "@jupyterlab/builder": "^4.0.0",
@@ -76,6 +102,7 @@
         "stylelint-csstree-validator": "^3.0.0",
         "stylelint-prettier": "^4.0.0",
         "typescript": "~5.5.4",
+        "vitest": "^4.1.7",
         "yjs": "^13.5.0"
     },
     "resolutions": {
