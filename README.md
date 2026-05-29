@@ -1,8 +1,10 @@
-# jupyter_strudel
+# Strupyter
 
 [![Github Actions Status](https://github.com/mfisher87/strupyter/workflows/Build/badge.svg)](https://github.com/mfisher87/strupyter/actions/workflows/build.yml)
 
 Strudel livecoding for JupyterLab
+
+> [!IMPORTANT] This is AI slop. I may or may not actually develop this.
 
 ## Requirements
 
